@@ -1,0 +1,77 @@
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 2rem;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.chapterNumber {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.125rem;
+  font-weight: normal;
+  color: #666;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.75rem;
+  font-weight: normal;
+  color: #2a2a2a;
+  margin: 0;
+}
+
+.body {
+  text-align: left;
+  margin-bottom: 2rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .body {
+    padding: 0 1rem;
+  }
+}
+
+.verseLine {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #2a2a2a;
+  margin: 0.25rem 0;
+}
+
+.separator {
+  width: 60px;
+  height: 1px;
+  background-color: #ccc;
+  margin: 3rem auto;
+}
+
+.footnotes {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #666;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footnotes p {
+  margin: 0;
+}
