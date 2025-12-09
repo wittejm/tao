@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ChapterDisplay from './components/ChapterDisplay';
-import Navigation from './components/Navigation';
+import Navigation, { SourceLink } from './components/Navigation';
 import type { Chapter } from './types/chapter';
 import chaptersData from './data/extracted_content.json';
 import './App.css';
@@ -113,6 +113,7 @@ function App() {
         onNext={handleNext}
         onGoToChapter={handleGoToChapter}
       />
+      <SourceLink />
     </div>
   );
 }

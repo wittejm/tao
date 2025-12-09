@@ -101,3 +101,18 @@ export default function Navigation({
     </nav>
   );
 }
+
+export function SourceLink() {
+  return (
+    <div className={styles.sourceContainer}>
+      <a
+        href="https://wesleyac.com/dao/refs/leguin1998.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.sourceLink}
+      >
+        Source
+      </a>
+    </div>
+  );
+}
