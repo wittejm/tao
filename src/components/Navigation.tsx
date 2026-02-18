@@ -107,11 +107,16 @@ interface SourceLinkProps {
   onToggle: () => void;
 }
 
+const sourceUrls = {
+  leguin: 'https://wesleyac.com/dao/refs/leguin1998.pdf',
+  mitchell: 'https://terebess.hu/english/tao/mitchell.html',
+};
+
 export function SourceLink({ translation, onToggle }: SourceLinkProps) {
   return (
     <div className={styles.sourceContainer}>
       <a
-        href="https://wesleyac.com/dao/refs/leguin1998.pdf"
+        href={sourceUrls[translation]}
         target="_blank"
         rel="noopener noreferrer"
         className={styles.sourceLink}
