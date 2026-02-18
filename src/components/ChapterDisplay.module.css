@@ -55,6 +55,10 @@
   margin: 0.25rem 0;
 }
 
+.verseLine:empty {
+  margin: 0.5rem 0;
+}
+
 .separator {
   width: 60px;
   height: 1px;

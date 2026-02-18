@@ -102,7 +102,12 @@ export default function Navigation({
   );
 }
 
-export function SourceLink() {
+interface SourceLinkProps {
+  translation: 'leguin' | 'mitchell';
+  onToggle: () => void;
+}
+
+export function SourceLink({ translation, onToggle }: SourceLinkProps) {
   return (
     <div className={styles.sourceContainer}>
       <a
@@ -113,6 +118,13 @@ export function SourceLink() {
       >
         Source
       </a>
+      <span className={styles.sourceSeparator}>·</span>
+      <button
+        className={styles.sourceLink}
+        onClick={onToggle}
+      >
+        {translation === 'leguin' ? 'Mitchell' : 'Le Guin'}
+      </button>
     </div>
   );
 }

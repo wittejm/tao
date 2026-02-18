@@ -2,17 +2,31 @@ import { useState, useEffect } from 'react';
 import ChapterDisplay from './components/ChapterDisplay';
 import Navigation, { SourceLink } from './components/Navigation';
 import type { Chapter } from './types/chapter';
-import chaptersData from './data/extracted_content.json';
+import leguinData from './data/extracted_content.json';
+import mitchellData from './data/mitchell.json';
 import './App.css';
 
 const STORAGE_KEY = 'currentChapter';
+const TRANSLATION_KEY = 'translation';
+
+export type Translation = 'leguin' | 'mitchell';
+
+const translationData: Record<Translation, Chapter[]> = {
+  leguin: leguinData as Chapter[],
+  mitchell: mitchellData as Chapter[],
+};
 
 function App() {
-  const chapters: Chapter[] = chaptersData as Chapter[];
+  const [translation, setTranslation] = useState<Translation>('leguin');
+  const chapters: Chapter[] = translationData[translation];
   const [currentChapter, setCurrentChapter] = useState<number>(1);
 
-  // Load saved chapter from localStorage on mount
+  // Load saved translation and chapter from localStorage on mount
   useEffect(() => {
+    const savedTranslation = localStorage.getItem(TRANSLATION_KEY);
+    if (savedTranslation === 'leguin' || savedTranslation === 'mitchell') {
+      setTranslation(savedTranslation);
+    }
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       const chapterNum = parseInt(saved, 10);
@@ -22,10 +36,18 @@ function App() {
     }
   }, [chapters.length]);
 
-  // Save chapter to localStorage whenever it changes
+  // Save chapter and translation to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, currentChapter.toString());
   }, [currentChapter]);
+
+  useEffect(() => {
+    localStorage.setItem(TRANSLATION_KEY, translation);
+  }, [translation]);
+
+  const handleToggleTranslation = () => {
+    setTranslation((prev) => (prev === 'leguin' ? 'mitchell' : 'leguin'));
+  };
 
   // Keyboard navigation
   useEffect(() => {
@@ -113,7 +135,7 @@ function App() {
         onNext={handleNext}
         onGoToChapter={handleGoToChapter}
       />
-      <SourceLink />
+      <SourceLink translation={translation} onToggle={handleToggleTranslation} />
     </div>
   );
 }

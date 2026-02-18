@@ -10,7 +10,7 @@ export default function ChapterDisplay({ chapter }: ChapterDisplayProps) {
     <article className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.chapterNumber}>Chapter {chapter.chapter}</h1>
-        <h2 className={styles.title}>{chapter.title}</h2>
+        {chapter.title && <h2 className={styles.title}>{chapter.title}</h2>}
       </header>
 
       <div className={styles.body}>
